@@ -91,16 +91,17 @@
                     <navigationItem key="navigationItem" id="1dS-XO-2hq"/>
                     <connections>
                         <outlet property="cityChooseTF" destination="bNz-gN-iJh" id="DNO-JP-wBi"/>
+                        <outlet property="tableView" destination="W78-8g-Upo" id="0ch-wk-W0d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aSa-QH-lXs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1598.5507246376812" y="51.5625"/>
         </scene>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -171,7 +172,6 @@
         <!--Navigation Controller-->
         <scene sceneID="4kW-aT-yIL">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KL4-13-1GR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hFb-VO-goW" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yJ7-H5-fDX">
@@ -183,6 +183,7 @@
                         <segue destination="58N-I9-okN" kind="relationship" relationship="rootViewController" id="T2s-n5-lQ8"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KL4-13-1GR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="688.40579710144937" y="51.5625"/>
         </scene>

@@ -8,7 +8,9 @@
 import UIKit
 
 class CityChooseViewController: UIViewController {
-//    var cities: [String] = []
+    
+    @IBOutlet weak var tableView: UITableView!
+    //    var cities: [String] = []
     
     var delegate: CurrentCityDelegate!
     var cities: [String]!
@@ -18,6 +20,7 @@ class CityChooseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
         title = "Weather"
         cityChooseTF.delegate = self
     }
@@ -39,8 +42,6 @@ extension CityChooseViewController: UITableViewDataSource {
             return citiesArr.count
         } else {
             return 1
-                
-            
         }
     }
     
@@ -51,11 +52,19 @@ extension CityChooseViewController: UITableViewDataSource {
         content.text = cities[indexPath.row]
         cell.contentConfiguration = content
         return cell
-        
     }
     
     
-    
+           
+}
+
+extension CityChooseViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let city = cities[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+        delegate.saveCity(city: city)
+        dismiss(animated: true)
+    }
 }
 
 extension CityChooseViewController: UITextFieldDelegate {
@@ -66,8 +75,7 @@ extension CityChooseViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let text = textField.text else { return }
-        //delegate.saveCity(city: text)
-        //titleLabel.text = text
+       // guard let text = textField.text else { return }
     }
+    
 }

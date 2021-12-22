@@ -12,13 +12,14 @@ protocol CurrentCityDelegate {
     func saveCity(city: String)
 }
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     @IBOutlet var cityName: UILabel!
     @IBOutlet var temperatureLabel: UILabel!
     @IBOutlet var conditionTextLabel: UILabel!
 
     @IBOutlet var weatherLogo: UIImageView!
     var cities: [String] = []
+    var citiesFromApi: [Cities] = []
      var city = ""
      lazy var link = "https://api.weatherapi.com/v1/current.json?key=284d7d06687e411e9dd211536211812&q=\(city)&aqi=no"
     
@@ -26,8 +27,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         if let currentCity = UserDefaults.standard.string(forKey: "City") {
             city = currentCity
+            if !cities.contains(city) {
             cities.append(city)
+            }
         }
+       // fetchCities()
         hideLabels()
         requestWeather()
     }
@@ -43,7 +47,6 @@ class ViewController: UIViewController {
                 cityChooseVC.cities = citiesArr
           
         }
-        
     }
      
     // Временный костыль
@@ -64,14 +67,14 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: CurrentCityDelegate {
+extension MainViewController: CurrentCityDelegate {
     func saveCity(city: String) {
         self.city = city
     }
 }
 
 //:MARK Network
-extension ViewController {
+extension MainViewController {
     private func fetchAlamofire() {
         NetworkManager.shared.fetchData(from: link) { result in
             switch result {
@@ -97,6 +100,20 @@ extension ViewController {
             }
         }
     }
+    
+    private func fetchCities() {
+        NetworkManager.shared.fetchCities(from: "https://countriesnow.space/api/v0.1/countries/population/cities") { result in
+            switch result {
+
+            case .success(let cities):
+                self.citiesFromApi = cities
+                print(self.citiesFromApi)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     
     private func requestWeather() {
         if !city.isEmpty{
