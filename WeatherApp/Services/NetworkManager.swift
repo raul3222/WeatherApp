@@ -5,7 +5,7 @@
 //  Created by Raul Shafigin on 18.12.2021.
 //
 
-import Foundation
+//import Foundation
 import Alamofire
 
 enum NetworkError: Error {
@@ -16,8 +16,24 @@ class NetworkManager {
     static let shared = NetworkManager()
     private init() {}
     
+    
+    
+//
+//    Alamofire.request(
+//        .GET,
+//        "http://api.imagga.com/v1/tagging",
+//        parameters: ["content": contentID],
+//        headers: ["Authorization" : "Basic xxx"]
+    //        )
     func fetchData(from url: String, completion: @escaping(Result<[Weather], NetworkError>) -> Void) {
-        AF.request(url)
+        AF.request(
+            url
+//            method: .get,
+//           // params: {q: "San Francisco"},
+//            headers: ["x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
+//                      "x-rapidapi-key": "8b2934fbd2mshfdeeb1ca9a70b88p1546eajsnf2236ac4a666"]
+            
+        )
             .validate()
             .responseJSON { dataResponse in
                 switch dataResponse.result {

@@ -40,13 +40,14 @@ struct Location: Codable {
 struct Current: Codable {
     let temp_c: Int
     let condition: Condition
-    //let wind_kph: String
+    let wind: Double
 
     init(value: [String: Any]) {
         temp_c = value["temp_c"] as? Int ?? 0
-        //wind_kph = value["wind_kph"] as? String ?? ""
+        wind = value["wind_kph"] as? Double ?? 0
         let conditionDict = value["condition"] as? [String: Any] ?? [:]
         condition = Condition(value: conditionDict)
+        
     }
 }
 

@@ -50,7 +50,7 @@
                                     <outlet property="dataSource" destination="58N-I9-okN" id="Sur-ef-Nqo"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="niA-FJ-VmM">
+                            <searchBar contentMode="redraw" text="" translatesAutoresizingMaskIntoConstraints="NO" id="niA-FJ-VmM">
                                 <rect key="frame" x="0.0" y="165" width="414" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -139,6 +139,12 @@
                                     <segue destination="hFb-VO-goW" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="RLF-XX-upv"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0b-sd-2Q6">
+                                <rect key="frame" x="186" y="438" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -150,10 +156,12 @@
                             <constraint firstAttribute="bottom" secondItem="RPJ-6y-ypt" secondAttribute="bottom" constant="40" id="IZj-oe-7uj"/>
                             <constraint firstItem="RPJ-6y-ypt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="349" id="IyA-i5-Lzn"/>
                             <constraint firstItem="5lO-vm-g7W" firstAttribute="top" secondItem="Cvy-SP-7c0" secondAttribute="bottom" constant="20" id="LTg-Rx-4OO"/>
+                            <constraint firstItem="p0b-sd-2Q6" firstAttribute="top" secondItem="5lO-vm-g7W" secondAttribute="bottom" constant="46" id="QHT-Pb-42J"/>
                             <constraint firstItem="E3G-uI-m04" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UEk-RM-hnT"/>
                             <constraint firstItem="mdC-CI-gLL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZKi-po-ccb"/>
                             <constraint firstItem="5lO-vm-g7W" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="b5M-Dv-kTV"/>
                             <constraint firstItem="mdC-CI-gLL" firstAttribute="top" secondItem="E3G-uI-m04" secondAttribute="bottom" constant="20" id="jDo-Fc-ENE"/>
+                            <constraint firstItem="p0b-sd-2Q6" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="khY-xk-hDt"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -163,6 +171,7 @@
                         <outlet property="conditionTextLabel" destination="Cvy-SP-7c0" id="3Nr-bv-pY5"/>
                         <outlet property="temperatureLabel" destination="mdC-CI-gLL" id="dbR-bQ-CeE"/>
                         <outlet property="weatherLogo" destination="5lO-vm-g7W" id="xMc-pC-Ahc"/>
+                        <outlet property="windSpeedLabel" destination="p0b-sd-2Q6" id="ThQ-cY-cDs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
