@@ -11,29 +11,14 @@ import Alamofire
 enum NetworkError: Error {
     case noData
     case invalidURL
+    case encodingError
 }
 class NetworkManager {
     static let shared = NetworkManager()
     private init() {}
     
-    
-    
-//
-//    Alamofire.request(
-//        .GET,
-//        "http://api.imagga.com/v1/tagging",
-//        parameters: ["content": contentID],
-//        headers: ["Authorization" : "Basic xxx"]
-    //        )
     func fetchData(from url: String, completion: @escaping(Result<[Weather], NetworkError>) -> Void) {
-        AF.request(
-            url
-//            method: .get,
-//           // params: {q: "San Francisco"},
-//            headers: ["x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
-//                      "x-rapidapi-key": "8b2934fbd2mshfdeeb1ca9a70b88p1546eajsnf2236ac4a666"]
-            
-        )
+        AF.request(url)
             .validate()
             .responseJSON { dataResponse in
                 switch dataResponse.result {
@@ -51,13 +36,12 @@ class NetworkManager {
             .validate()
             .responseData { response in
                 switch response.result {
-                    
                 case .success(let data):
                     completion(.success(data))
                 case .failure(_):
                     print("error")
-                }
             }
+        }
     }
     
     //MARK: временный метод Требуется оптимизация
@@ -74,6 +58,4 @@ class NetworkManager {
             }
         }
     }
-    
-
 }

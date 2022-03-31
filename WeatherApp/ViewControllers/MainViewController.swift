@@ -20,8 +20,8 @@ class MainViewController: UIViewController {
     @IBOutlet var weatherLogo: UIImageView!
     var cities: [City] = []
     var citiesFromApi: [Cities] = []
-     var city = ""
-     lazy var link = "https://api.weatherapi.com/v1/current.json?key=284d7d06687e411e9dd211536211812&q=\(city)&aqi=no"
+    var city = ""
+    lazy var link = "https://api.weatherapi.com/v1/current.json?key=284d7d06687e411e9dd211536211812&q=\(city)&aqi=no"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,16 +49,11 @@ class MainViewController: UIViewController {
     // Временный костыль
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //link = "https://community-open-weather-map.p.rapidapi.com/climate/month?q=San%20Francisco"
         link = "https://api.weatherapi.com/v1/current.json?key=284d7d06687e411e9dd211536211812&q=\(city)&aqi=no"
         hideLabels()
         requestWeather()
         fetchCitiesFromCoreData()
     }
-    
-//    public func saveLastCity() {
-//        UserDefaults.standard.set(city, forKey: "LastCity")
-//    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -77,46 +72,36 @@ extension MainViewController: CurrentCityDelegate {
 //:MARK Network
 extension MainViewController {
     private func fetchAlamofire() {
-        print("fetch")
         NetworkManager.shared.fetchData(from: link) { result in
             switch result {
-
             case .success(let weather):
-                self.cityName.text = weather[0].location.name
-                self.temperatureLabel.text = String(weather[0].current.temp_c)  + "°"
-                self.conditionTextLabel.text = weather[0].current.condition.text
-                self.windSpeedLabel.text = String(weather[0].current.wind) + " kph"
-                self.showLabels()
-                var logoUrl = weather[0].current.condition.icon
-                logoUrl = "https:\(logoUrl)"
-                NetworkManager.shared.fetchImage(from: logoUrl) { result in
-                    switch result {
-
-                    case .success(let imageData):
-                        self.weatherLogo.image = UIImage(data: imageData)
-                    case .failure(_):
-                        print("error")
-                    }
-                }
+                self.configureUI(with: weather)
             case .failure(let error):
                 print(error)
             }
         }
     }
+    private func fetchLogo(from url: String) {
+        NetworkManager.shared.fetchImage(from: url) { result in
+            switch result {
+            case .success(let imageData):
+                self.weatherLogo.image = UIImage(data: imageData)
+            case .failure(_):
+                print("error")
+            }
+        }
+    }
     
-//    private func fetchCities() {
-//        NetworkManager.shared.fetchCities(from: "https://countriesnow.space/api/v0.1/countries/population/cities") { result in
-//            switch result {
-//
-//            case .success(let cities):
-//                self.citiesFromApi = cities
-//                print(self.citiesFromApi)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-//    }
-    
+    private func configureUI(with weather: [Weather]) {
+        cityName.text = weather[0].location.name
+        temperatureLabel.text = String(weather[0].current.temp_c)  + "°"
+        conditionTextLabel.text = weather[0].current.condition.text
+        windSpeedLabel.text = String(weather[0].current.wind) + " kph"
+        showLabels()
+        var logoUrl = weather[0].current.condition.icon
+        logoUrl = "https:\(logoUrl)"
+        fetchLogo(from: logoUrl)
+    }
     
     private func requestWeather() {
         if !city.isEmpty{

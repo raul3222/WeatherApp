@@ -50,17 +50,13 @@
                                     <outlet property="dataSource" destination="58N-I9-okN" id="Sur-ef-Nqo"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" text="" translatesAutoresizingMaskIntoConstraints="NO" id="niA-FJ-VmM">
-                                <rect key="frame" x="0.0" y="165" width="414" height="51"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose city" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bNz-gN-iJh">
                                 <rect key="frame" x="20" y="121" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Y5-w3-jKL">
-                                <rect key="frame" x="347" y="88" width="67" height="31"/>
+                                <rect key="frame" x="175.5" y="179" width="63.5" height="31"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -75,17 +71,13 @@
                         <constraints>
                             <constraint firstItem="W78-8g-Upo" firstAttribute="trailing" secondItem="1oi-md-NWJ" secondAttribute="trailing" id="44J-o2-42H"/>
                             <constraint firstItem="bNz-gN-iJh" firstAttribute="top" secondItem="1oi-md-NWJ" secondAttribute="top" constant="33" id="8d4-ti-zZs"/>
-                            <constraint firstItem="niA-FJ-VmM" firstAttribute="leading" secondItem="1oi-md-NWJ" secondAttribute="leading" id="Q8q-fq-Y3H"/>
-                            <constraint firstItem="9Y5-w3-jKL" firstAttribute="leading" secondItem="1oi-md-NWJ" secondAttribute="leading" constant="347" id="RMG-Jp-cS3"/>
-                            <constraint firstItem="niA-FJ-VmM" firstAttribute="trailing" secondItem="1oi-md-NWJ" secondAttribute="trailing" id="ewH-Lg-WJW"/>
+                            <constraint firstItem="W78-8g-Upo" firstAttribute="top" secondItem="9Y5-w3-jKL" secondAttribute="bottom" constant="8" symbolic="YES" id="Oxm-kD-iqa"/>
+                            <constraint firstItem="9Y5-w3-jKL" firstAttribute="centerX" secondItem="XSA-HB-wxK" secondAttribute="centerX" id="USv-nw-Bgg"/>
+                            <constraint firstItem="9Y5-w3-jKL" firstAttribute="top" secondItem="bNz-gN-iJh" secondAttribute="bottom" constant="24" id="iDL-m6-ip2"/>
                             <constraint firstItem="W78-8g-Upo" firstAttribute="leading" secondItem="1oi-md-NWJ" secondAttribute="leading" id="kMa-ph-WxJ"/>
-                            <constraint firstItem="niA-FJ-VmM" firstAttribute="top" secondItem="bNz-gN-iJh" secondAttribute="bottom" constant="10" id="mak-3i-sif"/>
-                            <constraint firstItem="1oi-md-NWJ" firstAttribute="trailing" secondItem="9Y5-w3-jKL" secondAttribute="trailing" id="nSP-CN-eTi"/>
-                            <constraint firstItem="9Y5-w3-jKL" firstAttribute="top" secondItem="1oi-md-NWJ" secondAttribute="top" id="ouf-v8-5ev"/>
                             <constraint firstItem="bNz-gN-iJh" firstAttribute="leading" secondItem="1oi-md-NWJ" secondAttribute="leading" constant="20" id="qSq-xv-g9N"/>
                             <constraint firstItem="1oi-md-NWJ" firstAttribute="trailing" secondItem="bNz-gN-iJh" secondAttribute="trailing" constant="20" id="rN5-w4-DND"/>
                             <constraint firstAttribute="bottom" secondItem="W78-8g-Upo" secondAttribute="bottom" id="rme-Dg-nbq"/>
-                            <constraint firstItem="W78-8g-Upo" firstAttribute="top" secondItem="niA-FJ-VmM" secondAttribute="bottom" constant="2" id="tee-Vp-GRm"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1dS-XO-2hq"/>
