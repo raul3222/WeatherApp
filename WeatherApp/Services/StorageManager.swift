@@ -17,6 +17,7 @@ class StorageManager {
         viewContext = persistentContainer.viewContext
     }
     
+    
     // MARK: - Core Data stack
     
     private var persistentContainer: NSPersistentContainer = {
@@ -45,6 +46,12 @@ class StorageManager {
         let city = City(context: viewContext)
         city.cityName = cityName
         completion(city)
+        saveContext()
+    }
+    func saveLastCity(_ lastCityName: String, completion: (LastCity) -> Void) {
+        let cityName = LastCity(context: viewContext)
+        cityName.lastCityName = lastCityName
+        completion(cityName)
         saveContext()
     }
     

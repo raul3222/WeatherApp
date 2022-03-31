@@ -11,13 +11,14 @@ protocol CurrentCityDelegate {
     func saveCity(city: String)
 }
 
-class MainViewController: UIViewController {
+class WeatherViewController: UIViewController {
     @IBOutlet var cityName: UILabel!
     @IBOutlet var temperatureLabel: UILabel!
     @IBOutlet var conditionTextLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
     
     @IBOutlet var weatherLogo: UIImageView!
+    private var activityIndicator: UIActivityIndicatorView?
     var cities: [City] = []
     var citiesFromApi: [Cities] = []
     var city = ""
@@ -25,6 +26,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator = showActivityIndicator(in: view)
         if let currentCity = UserDefaults.standard.string(forKey: "LastCity") {
                   city = currentCity
               }
@@ -45,32 +47,29 @@ class MainViewController: UIViewController {
             cityChooseVC.cities = cities
         }
     }
-     
+        
     // Временный костыль
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        UserDefaults.standard.set(city, forKey: "LastCity")
+        guard let lastCity = UserDefaults.standard.string(forKey: "LastCity") else {return}
+        print(lastCity)
+        activityIndicator?.startAnimating()
         link = "https://api.weatherapi.com/v1/current.json?key=284d7d06687e411e9dd211536211812&q=\(city)&aqi=no"
         hideLabels()
         requestWeather()
         fetchCitiesFromCoreData()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        print("closed")
-        UserDefaults.standard.set(city, forKey: "LastCity")
-
-    }
 }
 
-extension MainViewController: CurrentCityDelegate {
+extension WeatherViewController: CurrentCityDelegate {
     func saveCity(city: String) {
         self.city = city
     }
 }
 
 //:MARK Network
-extension MainViewController {
+extension WeatherViewController {
     private func fetchAlamofire() {
         NetworkManager.shared.fetchData(from: link) { result in
             switch result {
@@ -97,10 +96,13 @@ extension MainViewController {
         temperatureLabel.text = String(weather[0].current.temp_c)  + "°"
         conditionTextLabel.text = weather[0].current.condition.text
         windSpeedLabel.text = String(weather[0].current.wind) + " kph"
+        self.activityIndicator?.stopAnimating()
         showLabels()
         var logoUrl = weather[0].current.condition.icon
         logoUrl = "https:\(logoUrl)"
         fetchLogo(from: logoUrl)
+        
+       
     }
     
     private func requestWeather() {
@@ -115,16 +117,18 @@ extension MainViewController {
         temperatureLabel.isHidden = true
         conditionTextLabel.isHidden = true
         windSpeedLabel.isHidden = true
+        weatherLogo.isHidden = true
     }
     private func showLabels() {
         cityName.isHidden = false
         temperatureLabel.isHidden = false
         conditionTextLabel.isHidden = false
         windSpeedLabel.isHidden = false
+        weatherLogo.isHidden = false
     }
 }
 
-extension MainViewController {
+extension WeatherViewController {
     
     private func fetchCitiesFromCoreData() {
         StorageManager.shared.fetchData { result in
@@ -141,5 +145,19 @@ extension MainViewController {
         StorageManager.shared.save(cityName) { city in
             print("saved")
         }
+    }
+}
+
+extension WeatherViewController {
+    private func showActivityIndicator(in view: UIView) -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.color = .black
+        activityIndicator.startAnimating()
+        activityIndicator.center = view.center
+        activityIndicator.hidesWhenStopped = true
+        
+        view.addSubview(activityIndicator)
+        
+        return activityIndicator
     }
 }

@@ -3,7 +3,11 @@
     <entity name="City" representedClassName="City" syncable="YES" codeGenerationType="class">
         <attribute name="cityName" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="LastCity" representedClassName="LastCity" syncable="YES" codeGenerationType="class">
+        <attribute name="lastCityName" optional="YES" attributeType="String"/>
+    </entity>
     <elements>
         <element name="City" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="LastCity" positionX="-63" positionY="-9" width="128" height="44"/>
     </elements>
 </model>
