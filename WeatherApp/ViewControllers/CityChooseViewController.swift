@@ -13,6 +13,7 @@ class CityChooseViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var delegate: CurrentCityDelegate!
     var cities: [City]!
+    var city = ""
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var cityChooseTF: UITextField!
@@ -24,12 +25,24 @@ class CityChooseViewController: UIViewController {
         cityChooseTF.delegate = self
     }
     
+    
     @IBAction func doneButton(_ sender: Any) {
-        var isExist = false
         view.endEditing(true)
+        saveCityToList()
+        dismiss(animated: true)
+    }
+    
+    private func deleteCity(at index: Int) {
+        let taskToDelete = cities[index]
+        cities.remove(at: index)
+        StorageManager.shared.delete(taskToDelete)
+    }
+    
+    private func saveCityToList() {
+        var isExist = false
         guard let text = cityChooseTF.text else { return }
-        delegate.saveCity(city: text)
         if !text.isEmpty {
+            delegate.saveCity(city: text)
             StorageManager.shared.fetchData { result in
                 switch result{
                 case .success(let cities):
@@ -50,7 +63,6 @@ class CityChooseViewController: UIViewController {
                 }
             }
         }
-        dismiss(animated: true)
     }
 }
 
@@ -76,12 +88,6 @@ extension CityChooseViewController: UITableViewDataSource {
             deleteCity(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
-    }
-    
-    private func deleteCity(at index: Int) {
-        let taskToDelete = cities[index]
-        cities.remove(at: index)
-        StorageManager.shared.delete(taskToDelete)
     }
 }
 

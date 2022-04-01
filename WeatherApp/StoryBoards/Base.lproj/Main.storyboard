@@ -137,6 +137,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose city" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="weO-Ma-1Pt">
+                                <rect key="frame" x="155" y="62" width="104" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -149,16 +155,19 @@
                             <constraint firstItem="RPJ-6y-ypt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="349" id="IyA-i5-Lzn"/>
                             <constraint firstItem="5lO-vm-g7W" firstAttribute="top" secondItem="Cvy-SP-7c0" secondAttribute="bottom" constant="20" id="LTg-Rx-4OO"/>
                             <constraint firstItem="p0b-sd-2Q6" firstAttribute="top" secondItem="5lO-vm-g7W" secondAttribute="bottom" constant="46" id="QHT-Pb-42J"/>
+                            <constraint firstItem="weO-Ma-1Pt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Qb0-Jr-WuB"/>
                             <constraint firstItem="E3G-uI-m04" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UEk-RM-hnT"/>
                             <constraint firstItem="mdC-CI-gLL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZKi-po-ccb"/>
                             <constraint firstItem="5lO-vm-g7W" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="b5M-Dv-kTV"/>
                             <constraint firstItem="mdC-CI-gLL" firstAttribute="top" secondItem="E3G-uI-m04" secondAttribute="bottom" constant="20" id="jDo-Fc-ENE"/>
+                            <constraint firstItem="weO-Ma-1Pt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="18" id="kMP-Y5-Z5c"/>
                             <constraint firstItem="p0b-sd-2Q6" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="khY-xk-hDt"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="chooseCityLabel" destination="weO-Ma-1Pt" id="nld-5z-zbQ"/>
                         <outlet property="cityName" destination="E3G-uI-m04" id="Vz8-c1-Gh1"/>
                         <outlet property="conditionTextLabel" destination="Cvy-SP-7c0" id="3Nr-bv-pY5"/>
                         <outlet property="temperatureLabel" destination="mdC-CI-gLL" id="dbR-bQ-CeE"/>

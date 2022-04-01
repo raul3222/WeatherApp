@@ -44,18 +44,18 @@ class NetworkManager {
         }
     }
     
-    //MARK: временный метод Требуется оптимизация
-    func fetchCities(from url: String, completion: @escaping(Result<[Cities], NetworkError>) -> Void) {
-        AF.request(url)
-            .validate()
-            .responseJSON { dataResponse in
-                switch dataResponse.result {
-                case .success(let value):
-                    let cities = Cities.getCities(from: value)
-                    completion(.success(cities))
-                case .failure(let error):
-                    print(error.localizedDescription)
-            }
-        }
-    }
+    //MARK: временно не используется
+//    func fetchCities(from url: String, completion: @escaping(Result<[Cities], NetworkError>) -> Void) {
+//        AF.request(url)
+//            .validate()
+//            .responseJSON { dataResponse in
+//                switch dataResponse.result {
+//                case .success(let value):
+//                    let cities = Cities.getCities(from: value)
+//                    completion(.success(cities))
+//                case .failure(let error):
+//                    print(error.localizedDescription)
+//            }
+//        }
+//    }
 }
