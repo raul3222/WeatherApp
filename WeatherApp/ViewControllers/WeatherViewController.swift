@@ -36,10 +36,7 @@ class WeatherViewController: UIViewController {
         hideLabels()
         requestWeather()
     }
-    
-    
-   
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print(citiesFromApi.count)
         let destVC = segue.destination as! UINavigationController
@@ -51,7 +48,6 @@ class WeatherViewController: UIViewController {
         }
     }
         
-    // Временный костыль
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         link = "https://api.weatherapi.com/v1/current.json?key=284d7d06687e411e9dd211536211812&q=\(city)&aqi=no"
@@ -65,7 +61,7 @@ extension WeatherViewController: CurrentCityDelegate {
     func saveCity(city: String) {
         self.city = city
         UserDefaults.standard.set(city, forKey: "LastCity")
-        guard let lastCity = UserDefaults.standard.string(forKey: "LastCity") else {return}
+//        guard let lastCity = UserDefaults.standard.string(forKey: "LastCity") else {return}
         print(lastCity)
     }
 }
@@ -98,31 +94,12 @@ extension WeatherViewController {
         cityName.text = weather[0].location.name
         temperatureLabel.text = String(weather[0].current.temp_c)  + "°"
         conditionTextLabel.text = weather[0].current.condition.text
-//        if weather[0].current.condition.text == "Overcast" {
-//            print("overcast")
-//            activityIndicator?.startAnimating()
-//            NetworkManager.shared.fetchImage(from: "https://oboi.ringtonz.ru/uploads/posts/2020-04/1585949618_oblaka_nebo_chb_151987_1440x2560.jpg") { result in
-//                switch result {
-//                case .success(let imageData):
-//                    self.imagePhoto.image = UIImage(data: imageData)
-//                    self.imagePhoto.layer.opacity = 0.6
-//                    self.imagePhoto.sizeToFit()
-//                    self.activityIndicator?.stopAnimating()
-//                    print("photo loaded")
-//                case .failure(_):
-//                    print("error")
-//                }
-//            }
-//
-//        }
         windSpeedLabel.text = String(weather[0].current.wind) + " kph"
         self.activityIndicator?.stopAnimating()
         showLabels()
         var logoUrl = weather[0].current.condition.icon
         logoUrl = "https:\(logoUrl)"
         fetchLogo(from: logoUrl)
-        
-       
     }
     
     private func requestWeather() {

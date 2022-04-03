@@ -44,7 +44,7 @@ class NetworkManager {
         }
     }
     
-    //MARK: временно не используется
+    //MARK: функционал временно не используется
 //    func fetchCities(from url: String, completion: @escaping(Result<[Cities], NetworkError>) -> Void) {
 //        AF.request(url)
 //            .validate()
