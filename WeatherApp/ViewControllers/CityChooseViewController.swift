@@ -74,11 +74,10 @@ extension CityChooseViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "citiesCell", for: indexPath)
-        
-        var content = cell.defaultContentConfiguration()
-        content.text = cities[indexPath.row].cityName
-        cell.contentConfiguration = content
+        let cell = tableView.dequeueReusableCell(withIdentifier: "citiesCell", for: indexPath) as! CityCell
+        let city = cities[indexPath.row]
+        cell.configure(with: city)
+
         return cell
     }
     
@@ -88,6 +87,9 @@ extension CityChooseViewController: UITableViewDataSource {
             deleteCity(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        80.0
     }
 }
 

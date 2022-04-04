@@ -60,6 +60,10 @@ class StorageManager {
         do {
             let cities = try viewContext.fetch(fetchRequest)
             completion(.success(cities))
+            if cities.isEmpty {
+                self.save("Moscow") { city in
+            }
+            }
         } catch let error{
             completion(.failure(error))
         }

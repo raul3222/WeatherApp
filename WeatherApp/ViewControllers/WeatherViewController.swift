@@ -22,23 +22,23 @@ class WeatherViewController: UIViewController {
     @IBOutlet var weatherLogo: UIImageView!
     private var activityIndicator: UIActivityIndicatorView?
     var cities: [City] = []
-    var citiesFromApi: [Cities] = []
-    var city = ""
+    //var citiesFromApi: [Cities] = []
+    var city = "Moscow"
+
     lazy var link = "https://api.weatherapi.com/v1/current.json?key=284d7d06687e411e9dd211536211812&q=\(city)&aqi=no"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator = showActivityIndicator(in: view)
-        if let currentCity = UserDefaults.standard.string(forKey: "LastCity") {
-                  city = currentCity
-              }
+//        if let currentCity = UserDefaults.standard.string(forKey: "LastCity") {
+//                  city = currentCity
+//              }
         fetchCitiesFromCoreData()
         hideLabels()
         requestWeather()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print(citiesFromApi.count)
         let destVC = segue.destination as! UINavigationController
         let cityChooseVC = destVC.topViewController as! CityChooseViewController
         cityChooseVC.delegate = self
@@ -62,7 +62,7 @@ extension WeatherViewController: CurrentCityDelegate {
         self.city = city
         UserDefaults.standard.set(city, forKey: "LastCity")
 //        guard let lastCity = UserDefaults.standard.string(forKey: "LastCity") else {return}
-        print(lastCity)
+        //print(lastCity)
     }
 }
 
@@ -94,7 +94,7 @@ extension WeatherViewController {
         cityName.text = weather[0].location.name
         temperatureLabel.text = String(weather[0].current.temp_c)  + "°"
         conditionTextLabel.text = weather[0].current.condition.text
-        windSpeedLabel.text = String(weather[0].current.wind) + " kph"
+        windSpeedLabel.text = "Wind " + String(weather[0].current.wind) + " kph"
         self.activityIndicator?.stopAnimating()
         showLabels()
         var logoUrl = weather[0].current.condition.icon

@@ -19,6 +19,7 @@
 		AD41BEEB2778FB9700715E6C /* CitiesList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AD41BEE92778FB9700715E6C /* CitiesList.xcdatamodeld */; };
 		AD41BEEE2778FC2900715E6C /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD41BEED2778FC2900715E6C /* StorageManager.swift */; };
 		AD6EF65D2773B1BE0054CB79 /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6EF65C2773B1BE0054CB79 /* Cities.swift */; };
+		ADC259F027F9FF1700C849E7 /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC259EF27F9FF1700C849E7 /* CityCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		AD41BEEA2778FB9700715E6C /* CitiesList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CitiesList.xcdatamodel; sourceTree = "<group>"; };
 		AD41BEED2778FC2900715E6C /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		AD6EF65C2773B1BE0054CB79 /* Cities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
+		ADC259EF27F9FF1700C849E7 /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 		AD15291727712754005AD926 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ADC259EF27F9FF1700C849E7 /* CityCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			files = (
 				AD152912276E8B3A005AD926 /* NetworkManager.swift in Sources */,
 				AD1528FC276E8A46005AD926 /* WeatherViewController.swift in Sources */,
+				ADC259F027F9FF1700C849E7 /* CityCell.swift in Sources */,
 				AD1528F8276E8A46005AD926 /* AppDelegate.swift in Sources */,
 				AD41BEEE2778FC2900715E6C /* StorageManager.swift in Sources */,
 				AD1528FA276E8A46005AD926 /* SceneDelegate.swift in Sources */,
