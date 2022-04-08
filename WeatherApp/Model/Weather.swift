@@ -41,10 +41,14 @@ struct Current: Codable {
     let temp_c: Int
     let condition: Condition
     let wind: Double
+    let humidity: Int
+    let wind_dir: String
 
     init(value: [String: Any]) {
         temp_c = value["temp_c"] as? Int ?? 0
         wind = value["wind_kph"] as? Double ?? 0
+        humidity = value["humidity"] as? Int ?? 0
+        wind_dir = value["wind_dir"] as? String ?? ""
         let conditionDict = value["condition"] as? [String: Any] ?? [:]
         condition = Condition(value: conditionDict)
         
