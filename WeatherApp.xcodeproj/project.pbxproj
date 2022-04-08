@@ -19,6 +19,7 @@
 		AD41BEEB2778FB9700715E6C /* CitiesList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AD41BEE92778FB9700715E6C /* CitiesList.xcdatamodeld */; };
 		AD41BEEE2778FC2900715E6C /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD41BEED2778FC2900715E6C /* StorageManager.swift */; };
 		AD6EF65D2773B1BE0054CB79 /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6EF65C2773B1BE0054CB79 /* Cities.swift */; };
+		ADAD148B27FE27C10089B015 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAD148A27FE27C00089B015 /* CircleView.swift */; };
 		ADC259F027F9FF1700C849E7 /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC259EF27F9FF1700C849E7 /* CityCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		AD41BEEA2778FB9700715E6C /* CitiesList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CitiesList.xcdatamodel; sourceTree = "<group>"; };
 		AD41BEED2778FC2900715E6C /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		AD6EF65C2773B1BE0054CB79 /* Cities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
+		ADAD148A27FE27C00089B015 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CircleView.swift; path = WeatherApp/Views/CircleView.swift; sourceTree = SOURCE_ROOT; };
 		ADC259EF27F9FF1700C849E7 /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,6 +144,7 @@
 		AD15291727712754005AD926 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ADAD148A27FE27C00089B015 /* CircleView.swift */,
 				ADC259EF27F9FF1700C849E7 /* CityCell.swift */,
 			);
 			path = Views;
@@ -285,6 +288,7 @@
 				AD1528F8276E8A46005AD926 /* AppDelegate.swift in Sources */,
 				AD41BEEE2778FC2900715E6C /* StorageManager.swift in Sources */,
 				AD1528FA276E8A46005AD926 /* SceneDelegate.swift in Sources */,
+				ADAD148B27FE27C10089B015 /* CircleView.swift in Sources */,
 				AD41BEEB2778FB9700715E6C /* CitiesList.xcdatamodeld in Sources */,
 				AD6EF65D2773B1BE0054CB79 /* Cities.swift in Sources */,
 				AD152916277126B4005AD926 /* CityChooseViewController.swift in Sources */,
